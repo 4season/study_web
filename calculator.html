@@ -30,29 +30,7 @@
         margin: 5px;
     }
 </style>
-<script>
-    let numOne = '';
-    let operator = '';
-    let numTwo = '';
-    const $operator = document.querySelector('#operator');
-    const $result = document.querySelector('#result');
-    document.querySelector('#num-0').addEventListener('click', () => {});
-    document.querySelector('#num-1').addEventListener('click', () => {});
-    document.querySelector('#num-2').addEventListener('click', () => {});
-    document.querySelector('#num-3').addEventListener('click', () => {});
-    document.querySelector('#num-4').addEventListener('click', () => {});
-    document.querySelector('#num-5').addEventListener('click', () => {});
-    document.querySelector('#num-6').addEventListener('click', () => {});
-    document.querySelector('#num-7').addEventListener('click', () => {});
-    document.querySelector('#num-8').addEventListener('click', () => {});
-    document.querySelector('#num-9').addEventListener('click', () => {});
-    document.querySelector('#plus').addEventListener('click', () => {});
-    document.querySelector('#minus').addEventListener('click', () => {});
-    document.querySelector('#divide').addEventListener('click', () => {});
-    document.querySelector('#clear').addEventListener('click', () => {});
-    document.querySelector('#calculated').addEventListener('click', () => {});
-    document.querySelector('#multiply').addEventListener('click', () => {});
-</script>
+    
 <body>
     <input readonly id="operator">
     <input readonly type="number" id="result">
@@ -80,5 +58,34 @@
         <button id="calculate">=</button>
         <button id="multiply">x</button>
     </div>
+
+    <script>
+        let numOne = '';
+        let operator = '';
+        let numTwo = '';
+        const $operator = document.querySelector('#operator');
+        const $result = document.querySelector('#result');
+
+        let onclickNumber = (event) => {    
+            if (operator) {
+                numTwo += event.target.textContent;
+            } else {
+                numOne += event.target.textContent;
+            }
+            $result.value += event.target.textContent;
+        };
+
+        for (i=0; i<=9; i++) {
+            document.querySelector(`#num-${i}`).addEventListener('click', onclickNumber);
+        }
+
+        document.querySelector('#plus').addEventListener('click', onclickNumber);
+        document.querySelector('#minus').addEventListener('click', onclickNumber);
+        document.querySelector('#divide').addEventListener('click', onclickNumber);
+        document.querySelector('#clear').addEventListener('click', onclickNumber);
+        document.querySelector('#calculated').addEventListener('click', onclickNumber);
+        document.querySelector('#multiply').addEventListener('click', onclickNumber);
+    </script>
+    
 </body>
 </html>
